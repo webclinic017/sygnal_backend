@@ -23,6 +23,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+CRONTAB_COMMAND_SUFFIX = '2>&1'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -31,13 +32,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'corsheaders',
-    'django_filters',
     'api',
     'core',
+    'django_crontab',
+    'scanner',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CRONJOBS = [
+    ('*/1 * * * *', 'scanner.scanner.scan'),
 ]
 
 ROOT_URLCONF = 'sygnal.urls'

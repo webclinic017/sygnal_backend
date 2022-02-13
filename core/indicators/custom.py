@@ -85,5 +85,13 @@ class RSIMACDCrossIndicator():
     def crossover(self) -> pd.Series:
         return self._df['crossover']
 
-    # TODO: add method for recent crossover that checks for
-    # the last value being True and second last being False
+    def is_undersold_and_crossed(self) -> bool:
+        rows = self._df['crossover'].tail(2)
+        return not rows.iloc[-1] and rows.iloc[0]
+
+    def get_cross_status(self) -> bool:
+        status = 'No Cross ❌'
+        if self.is_undersold_and_crossed():
+            status = 'Crossed ✅'
+
+        return status

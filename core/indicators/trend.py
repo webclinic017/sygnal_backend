@@ -1,6 +1,6 @@
 import pandas as pd
 
-from core.indicators.volatility import average_true_range
+from .volatility import average_true_range
 
 
 class SupertrendIndicator():
@@ -53,3 +53,10 @@ class SupertrendIndicator():
 
     def lower_band(self) -> pd.Series:
         return self._df['lowerband']
+
+    def trend_has_changed(self) -> bool:
+        rows = self._df['in_uptrend'].tail(2)
+        return rows.iloc[-1] != rows.iloc[0]
+
+    def get_latest_trend(self) -> pd.Series:
+        return 'Uptrend ✅' if self._df['in_uptrend'].iloc[-1] else 'Downtrend ❌'
