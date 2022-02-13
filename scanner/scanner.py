@@ -1,7 +1,6 @@
 import pandas as pd
 
 from binance import Client
-from django.forms.models import model_to_dict
 from core.indicators import RSIMACDCrossIndicator, SupertrendIndicator
 from .discord_webhook import DiscordWebhook
 

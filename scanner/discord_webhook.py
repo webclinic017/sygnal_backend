@@ -22,7 +22,6 @@ class DiscordWebhook():
         img_url = coin.pop('img_url')
         color = coin.pop('color')
 
-
         # https://stackoverflow.com/questions/64799340/discord-js-embed-width-is-unreliable
         embed = Embed(color=color)
         embed.set_image(url='https://i.stack.imgur.com/Fzh0w.png')

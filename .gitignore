@@ -9,6 +9,7 @@ media
 # Distribution / packaging 
 .Python
 /venv
+.vscode/
 .env
 develop-eggs/ 
 dist/ 
